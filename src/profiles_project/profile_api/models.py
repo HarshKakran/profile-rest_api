@@ -6,7 +6,7 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseU
 class UserProfileManager(BaseUserManager):
     #Help django work with our custom user model
 
-    def create_user(self, email, name, password=None):
+    def create_user(self, email, name, password):
         # Creates a new user object
         if not email:
             raise ValueError('User must have a email address')
@@ -19,7 +19,7 @@ class UserProfileManager(BaseUserManager):
 
         return user
 
-    def create_superuser(self, email, name, password):
+    def create_superuser(self, email, name, password=None):
         # Creates a new super user
 
         user = self.create_user(email, name, password)
